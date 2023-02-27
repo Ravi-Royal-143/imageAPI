@@ -22,7 +22,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/", express.static(path.join(__dirname, "../", "dist")));
+app.use("/", express.static(path.join(__dirname, "dist")));
 
 app.use(cors());
 
@@ -31,7 +31,7 @@ app.get('/test', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, "../", "dist", "index.html"));
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 server.listen(port, () => {
