@@ -27,7 +27,16 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
+const currDirPath = path.resolve(__dirname, "file");
+console.log(currDirPath)
+if (!fs.existsSync(currDirPath)) {
+    fs.mkdirSync(currDirPath);
+    console.log('Directory created successfully!');
+  } else {
+    console.log('Directory already exists!');
+  }
 app.use("/file", express.static(path.join("file")));
+
 app.use("/", express.static(path.join(__dirname, "dist")));
 
 app.post('/upload', upload.single('image'), (req, res) => {
