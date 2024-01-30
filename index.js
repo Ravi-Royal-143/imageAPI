@@ -35,7 +35,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
     if (!file) {
       return res.status(400).send('No file uploaded');
     }
-    fs.writeFile(`file/${file.originalname}`, file.buffer, (err) => {
+    fs.writeFile(`file/${file.originalname + Math.random()}`, file.buffer, (err) => {
       if (err) {
         return res.status(500).send('Error saving file');
       }
